@@ -1,16 +1,12 @@
+@all
 Feature: Paylocity employees benefits package
-
-  Scenario: Add Employee no Discount
-
-  @all
-  Feature: Add new Employee
 
   As a Employer
   I want to add employee
   So that to pay employee's benefits
 
-  @success
-  Scenario: Add Employee no Discounts
+  @success @regression
+  Scenario: Add Employee no Discount
     Given an Employer
     And I am on the Benefits Dashboard page
     When I select Add Employee
@@ -20,7 +16,7 @@ Feature: Paylocity employees benefits package
     And I should see the employee in the table
     And the benefit cost calculations are correct
 
-#  @fail
+#  @fail @regression
 #  Scenario: Add Employee with Discount
 #    Given an Employer
 #    And I am on the Benefits Dashboard page
