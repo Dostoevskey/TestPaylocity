@@ -6,10 +6,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class BenefitsDashboard  {
+public class BenefitsDashboard {
 
-    private LocatorsContainer locatorsContainer;
-    public WebDriverWait webDriverWait;
+    private WebDriverWait webDriverWait;
     private WebDriver driver;
 
 
@@ -24,10 +23,9 @@ public class BenefitsDashboard  {
     private By submitNewEmployeeButtonLocator = By.xpath("//button[@type='button' and contains(.,'Submit')]");
     private By firstNameValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(2)");
     private By lastNameValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(3)");
-    private By dependendentsValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(5)");
+    private By dependentsValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(5)");
     private By benefitCostsLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(7)");
     private By netPayLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(8)");
-
 
     /**
      * To run tests locally, please update your path to .../IdeaProject/TestPaylocity/src/test/resources/login.html
@@ -47,11 +45,6 @@ public class BenefitsDashboard  {
         driver.findElement(passwordLocator).sendKeys(password);
         driver.findElement(loginButtonLocator).click();
         Assert.assertEquals(driver.findElement(benefitsDashboardHeaderLocator).getText(), "Benefits Dashboard", "Login is successful");
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -67,7 +60,7 @@ public class BenefitsDashboard  {
         driver.findElement(submitNewEmployeeButtonLocator).click();
         Assert.assertEquals(driver.findElement(firstNameValidationLocator).getText(), "Stan", "First name is correct");
         Assert.assertEquals(driver.findElement(lastNameValidationLocator).getText(), "White", "Last name is correct");
-        Assert.assertEquals(driver.findElement(dependendentsValidationLocator).getText(), "0", "Number of dependents is correct");
+        Assert.assertEquals(driver.findElement(dependentsValidationLocator).getText(), "0", "Number of dependents is correct");
         Assert.assertEquals(driver.findElement(benefitCostsLocator).getText(), "38.46", "Benefit Cost is correct");
         Assert.assertEquals(driver.findElement(netPayLocator).getText(), "1961.54", "Net Pay is correct");
     }

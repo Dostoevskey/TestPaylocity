@@ -1,38 +1,27 @@
 package cucumberSteps;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class AddEmployeeSteps {
 
     private WebDriver driver;
     public WebDriverWait webDriverWait;
 
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
 
-    }
-
-    @Test
     @Given("^Navigate to the login page$")
     public void navigateToTheLoginPage() throws Throwable {
 
-        driver.get("file:///D:/Paylocity/login.html");
+        driver.get("file:///C:/Users/Igor/IdeaProject/TestPaylocity/src/test/resources/login.html");
         driver.findElement(By.cssSelector("input[name^='form-username']")).sendKeys("testUser");
         driver.findElement(By.cssSelector("input[name^='form-password']")).sendKeys("Test1234");
         driver.findElement(By.id("btnLogin")).click();
