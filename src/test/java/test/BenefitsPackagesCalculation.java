@@ -1,5 +1,6 @@
 package test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -14,24 +15,24 @@ public class BenefitsPackagesCalculation {
 
     @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         benefitsDashboard = new BenefitsDashboard(driver);
     }
 
-
-    /** This test checks business logic,
-     *  that employer is able to add new employee without discount
-     *  and benefit cost calculations are correct.
+    /**
+     * This test checks business logic,
+     * that employer is able to add new employee without discount
+     * and benefit cost calculations are correct.
      */
     @Test
     public void addEmployeeNoDiscount() {
         benefitsDashboard.pageLogin("testUser", "Test1234");
-        benefitsDashboard.addEmployeeNoDiscount("Stan", "White", "0" );
+        benefitsDashboard.addEmployeeNoDiscount("Stan", "White", "0");
     }
 
     @AfterTest
     public void tearDown() {
-        driver.quit();
+        driver.close();
     }
 }

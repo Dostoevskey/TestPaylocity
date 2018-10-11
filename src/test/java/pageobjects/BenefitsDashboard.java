@@ -6,29 +6,32 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class BenefitsDashboard {
+public class BenefitsDashboard  {
 
-    By usernameLocator = By.cssSelector("input[name^='form-username']");
-    By passwordLocator = By.cssSelector("input[name^='form-password']");
-    By loginButtonLocator = By.id("btnLogin");
-    By benefitsDashboardHeaderLocator = By.xpath("//*[@id='header']/h1[contains(.,'Benefits Dashboard')]");
-    By addEmployeeButtonLocator = By.id("btnAddEmployee");
-    By addFirstNameLocator = By.xpath("//form[@id='employees-form']/div[1]/*/input");
-    By addLastNameLocator = By.xpath("//form[@id='employees-form']/div[2]/*/input");
-    By addDependentsLocator = By.xpath("//form[@id='employees-form']/div[3]/*/input");
-    By submitNewEmployeeButtonLocator = By.xpath("//button[@type='button' and contains(.,'Submit')]");
-    By firstNameValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(2)");
-    By lastNameValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(3)");
-    By dependendentsValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(5)");
-    By benefitCostsLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(7)");
-    By netPayLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(8)");
-
-
+    private LocatorsContainer locatorsContainer;
     public WebDriverWait webDriverWait;
     private WebDriver driver;
 
-    /** To run tests locally, please update your path to .../IdeaProject/TestPaylocity/src/test/resources/login.html
-     *  or specify url to test environment.
+
+    private By usernameLocator = By.cssSelector("input[name^='form-username']");
+    private By passwordLocator = By.cssSelector("input[name^='form-password']");
+    private By loginButtonLocator = By.id("btnLogin");
+    private By benefitsDashboardHeaderLocator = By.xpath("//*[@id='header']/h1[contains(.,'Benefits Dashboard')]");
+    private By addEmployeeButtonLocator = By.id("btnAddEmployee");
+    private By addFirstNameLocator = By.xpath("//form[@id='employees-form']/div[1]/*/input");
+    private By addLastNameLocator = By.xpath("//form[@id='employees-form']/div[2]/*/input");
+    private By addDependentsLocator = By.xpath("//form[@id='employees-form']/div[3]/*/input");
+    private By submitNewEmployeeButtonLocator = By.xpath("//button[@type='button' and contains(.,'Submit')]");
+    private By firstNameValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(2)");
+    private By lastNameValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(3)");
+    private By dependendentsValidationLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(5)");
+    private By benefitCostsLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(7)");
+    private By netPayLocator = By.cssSelector("#employee-table * tr:nth-of-type(2) td:nth-of-type(8)");
+
+
+    /**
+     * To run tests locally, please update your path to .../IdeaProject/TestPaylocity/src/test/resources/login.html
+     * or specify url to test environment.
      */
     public BenefitsDashboard(WebDriver driver) {
         this.driver = driver;
@@ -44,17 +47,22 @@ public class BenefitsDashboard {
         driver.findElement(passwordLocator).sendKeys(password);
         driver.findElement(loginButtonLocator).click();
         Assert.assertEquals(driver.findElement(benefitsDashboardHeaderLocator).getText(), "Benefits Dashboard", "Login is successful");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Test logic
      */
-    public void addEmployeeNoDiscount(String firstname, String lastname, String dependents) {
+    public void addEmployeeNoDiscount(String firstName, String lastName, String dependents) {
         driver.findElement(addEmployeeButtonLocator).click();
         webDriverWait = new WebDriverWait(driver, 10);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(submitNewEmployeeButtonLocator));
-        driver.findElement(addFirstNameLocator).sendKeys(firstname);
-        driver.findElement(addLastNameLocator).sendKeys(lastname);
+        driver.findElement(addFirstNameLocator).sendKeys(firstName);
+        driver.findElement(addLastNameLocator).sendKeys(lastName);
         driver.findElement(addDependentsLocator).sendKeys(dependents);
         driver.findElement(submitNewEmployeeButtonLocator).click();
         Assert.assertEquals(driver.findElement(firstNameValidationLocator).getText(), "Stan", "First name is correct");
@@ -64,4 +72,3 @@ public class BenefitsDashboard {
         Assert.assertEquals(driver.findElement(netPayLocator).getText(), "1961.54", "Net Pay is correct");
     }
 }
-
