@@ -1,4 +1,4 @@
-package test;
+package runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
