@@ -1,23 +1,21 @@
-package test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageobjects.BenefitsDashboard;
+import pageobjects.BenefitsDashboardPage;
 
 public class BenefitsPackagesCalculation {
 
     private WebDriver driver;
-    private BenefitsDashboard benefitsDashboard;
+    private BenefitsDashboardPage benefitsDashboardPage;
 
     @BeforeTest
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        benefitsDashboard = new BenefitsDashboard(driver);
+        benefitsDashboardPage = new BenefitsDashboardPage(driver);
     }
 
     /**
@@ -27,8 +25,8 @@ public class BenefitsPackagesCalculation {
      */
     @Test
     public void addEmployeeNoDiscount() {
-        benefitsDashboard.pageLogin("testUser", "Test1234");
-        benefitsDashboard.addEmployeeNoDiscount("Stan", "White", "0");
+        benefitsDashboardPage.pageLogin("testUser", "Test1234");
+        benefitsDashboardPage.addEmployeeNoDiscount("Stan", "White", "0");
     }
 
     @AfterTest

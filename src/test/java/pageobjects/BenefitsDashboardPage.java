@@ -6,13 +6,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class BenefitsDashboard {
+public class BenefitsDashboardPage {
 
     private WebDriverWait webDriverWait;
     private WebDriver driver;
 
 
-    final By usernameLocator = By.cssSelector("input[name^='form-username']"); // add for all??
+    final By usernameLocator = By.cssSelector("input[name^='form-username']"); // add for all?? //ToDo
     private By passwordLocator = By.cssSelector("input[name^='form-password']");
     private By loginButtonLocator = By.id("btnLogin");
     private By benefitsDashboardHeaderLocator = By.xpath("//*[@id='header']/h1[contains(.,'Benefits Dashboard')]");
@@ -31,7 +31,7 @@ public class BenefitsDashboard {
      * To run tests locally, please update your path to .../IdeaProject/TestPaylocity/src/test/resources/login.html
      * or specify url to test environment.
      */
-    public BenefitsDashboard(WebDriver driver) {
+    public BenefitsDashboardPage(WebDriver driver) {
         this.driver = driver;
         driver.get("file:///C:/Users/Igor/IdeaProject/TestPaylocity/src/test/resources/login.html");
         Assert.assertEquals(driver.findElement(loginButtonLocator).getText(), "Login", "Login page loaded");
@@ -44,8 +44,9 @@ public class BenefitsDashboard {
         driver.findElement(usernameLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
         driver.findElement(loginButtonLocator).click();
-            }
+    }
 
+    //ToDo
     public void userCantLogin(String username, String password) { // add negative TC
         driver.findElement(usernameLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
@@ -56,6 +57,7 @@ public class BenefitsDashboard {
      * Test logic
      */
     public void addEmployeeNoDiscount(String firstName, String lastName, String dependents) {
+    //ToDo
         Assert.assertEquals(driver.findElement(benefitsDashboardHeaderLocator).getText(), "Benefits Dashboard", "Login is successful"); // moved from pageLogin
         driver.findElement(addEmployeeButtonLocator).click();
         webDriverWait = new WebDriverWait(driver, 10);
