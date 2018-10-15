@@ -12,7 +12,7 @@ public class BenefitsDashboard {
     private WebDriver driver;
 
 
-    private By usernameLocator = By.cssSelector("input[name^='form-username']");
+    final By usernameLocator = By.cssSelector("input[name^='form-username']"); // add for all??
     private By passwordLocator = By.cssSelector("input[name^='form-password']");
     private By loginButtonLocator = By.id("btnLogin");
     private By benefitsDashboardHeaderLocator = By.xpath("//*[@id='header']/h1[contains(.,'Benefits Dashboard')]");
@@ -44,13 +44,19 @@ public class BenefitsDashboard {
         driver.findElement(usernameLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
         driver.findElement(loginButtonLocator).click();
-        Assert.assertEquals(driver.findElement(benefitsDashboardHeaderLocator).getText(), "Benefits Dashboard", "Login is successful");
+            }
+
+    public void userCantLogin(String username, String password) { // add negative TC
+        driver.findElement(usernameLocator).sendKeys(username);
+        driver.findElement(passwordLocator).sendKeys(password);
+        driver.findElement(loginButtonLocator).click();
     }
 
     /**
      * Test logic
      */
     public void addEmployeeNoDiscount(String firstName, String lastName, String dependents) {
+        Assert.assertEquals(driver.findElement(benefitsDashboardHeaderLocator).getText(), "Benefits Dashboard", "Login is successful"); // moved from pageLogin
         driver.findElement(addEmployeeButtonLocator).click();
         webDriverWait = new WebDriverWait(driver, 10);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(submitNewEmployeeButtonLocator));
