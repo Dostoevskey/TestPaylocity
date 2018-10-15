@@ -1,22 +1,8 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import driver.TestRunner;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pageobjects.BenefitsDashboardPage;
 
-public class BenefitsPackagesCalculation {
-
-    private WebDriver driver;
-    private BenefitsDashboardPage benefitsDashboardPage;
-
-    @BeforeTest
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        benefitsDashboardPage = new BenefitsDashboardPage(driver);
-    }
+public class BenefitsPackagesCalculation extends TestRunner {
 
     /**
      * This test checks business logic,
@@ -24,9 +10,10 @@ public class BenefitsPackagesCalculation {
      * and benefit cost calculations are correct.
      */
     @Test
-    public void addEmployeeNoDiscount() {
-        benefitsDashboardPage.pageLogin("testUser", "Test1234");
-        benefitsDashboardPage.addEmployeeNoDiscount("Stan", "White", "0");
+    public void addEmployeeNoDiscount() throws InterruptedException {
+        TestLogic testLogic = new TestLogic(driver);
+        testLogic.userLoginSuccessfully("testUser", "Test1234");
+        testLogic.addEmployeeNoDiscount("Stan", "White", "0");
     }
 
     @AfterTest
