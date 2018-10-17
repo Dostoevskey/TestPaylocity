@@ -13,10 +13,10 @@ public class LoginPageObject extends PageObject {
         super(driver);
     }
 
-    @FindBy(css = "input[name^='form-username']")
+    @FindBy(css = "input[name='form-username']")
     private WebElement credentialsUsername;
 
-    @FindBy(css = "input[name^='form-password']")
+    @FindBy(css = "input[name='form-password']")
     private WebElement credentialsPassword;
 
     @FindBy(id = "btnLogin")

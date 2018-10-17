@@ -8,7 +8,6 @@ public class PageObject {
     protected WebDriver driver;
 
     /**
-     *
      * @param driver
      */
     PageObject(WebDriver driver) {

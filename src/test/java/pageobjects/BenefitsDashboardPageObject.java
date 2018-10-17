@@ -11,7 +11,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     WebDriverWait webDriverWait;
 
     /**
-     *
      * @param driver
      */
     public BenefitsDashboardPageObject(WebDriver driver) {
@@ -49,7 +48,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     private WebElement netPay;
 
     /**
-     *
      * @param firstName
      * @param lastName
      * @param dependents
@@ -65,7 +63,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     }
 
     /**
-     *
      * @return
      */
     public String verifyFirstName() {
@@ -73,7 +70,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     }
 
     /**
-     *
      * @return
      */
     public String verifyLastName() {
@@ -81,7 +77,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     }
 
     /**
-     *
      * @return
      */
     public String verifyDependents() {
@@ -89,7 +84,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     }
 
     /**
-     *
      * @return
      */
     public String verifyBenefitCosts() {
@@ -97,7 +91,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     }
 
     /**
-     *
      * @return
      */
     public String verifyNetPay() {
