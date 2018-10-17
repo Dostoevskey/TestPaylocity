@@ -7,15 +7,25 @@ import pageobjects.LoginPageObject;
 public class BenefitsPackagesCalculationTest extends TestRunner {
 
     /**
+     * This test checks that user can't login with wrong password.
+     */
+    @Test
+    public void testLoginFailedFalsePositive() {
+        LoginPageObject loginPageObject = new LoginPageObject(driver);
+        loginPageObject.withCredentials("testUser", "Password");
+        Assert.assertEquals(loginPageObject.verifyLoginFailed(), "The password is incorrect for username testUser");
+    }
+
+    /**
      * This test checks business logic,
      * that employer is able to add new employee without discount
      * and benefit cost calculations are correct.
      */
     @Test
-    public void testAddEmployeeNoDiscount() {
+    public void testPaylocityAddEmployeeNoDiscount() {
         LoginPageObject loginPageObject = new LoginPageObject(driver);
         loginPageObject.withCredentials("testUser", "Test1234");
-        Assert.assertEquals(loginPageObject.verifyLogin(), "Benefits Dashboard", "Login is unsuccessful");
+        loginPageObject.verifyLoginSuccess();
 
         BenefitsDashboardPageObject benefitsDashboardPageObject = new BenefitsDashboardPageObject(driver);
         benefitsDashboardPageObject.addEmployeeInformation("Stan", "White", "0");
@@ -26,6 +36,4 @@ public class BenefitsPackagesCalculationTest extends TestRunner {
         Assert.assertEquals(benefitsDashboardPageObject.verifyBenefitCosts(), "38.46", "Benefits Costs are incorrect");
         Assert.assertEquals(benefitsDashboardPageObject.verifyNetPay(), "1961.54", "Net Pay is incorrect");
     }
-
-//ToDo add negative Login Test
 }
