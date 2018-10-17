@@ -19,34 +19,34 @@ public class BenefitsDashboardPageObject extends PageObject {
     }
 
     @FindBy(id = "btnAddEmployee")
-    private WebElement addEmployeeButtonLocator;
+    private WebElement addEmployeeButton;
 
-    @FindBy(css = "form[id='employees-form'] div:nth-child(1) input")
-    private WebElement addFirstNameLocator;
+    @FindBy(css = "#employees-form div:nth-of-type(1) input")
+    private WebElement addFirstName;
 
-    @FindBy(xpath = "//form[@id='employees-form']/div[2]/*/input") //ToDo find new css locator
-    private WebElement addLastNameLocator;
+    @FindBy(css = "#employees-form div:nth-of-type(2) input")
+    private WebElement addLastName;
 
-    @FindBy(xpath = "//form[@id='employees-form']/div[3]/*/input") //ToDo find new css locator
-    private WebElement addDependentsLocator;
+    @FindBy(css = "#employees-form div:nth-of-type(3) input")
+    private WebElement addDependents;
 
     @FindBy(xpath = "//button[@type='button' and contains(.,'Submit')]")
-    private WebElement submitNewEmployeeButtonLocator;
+    private WebElement submitNewEmployeeButton;
 
-    @FindBy(css = "#employee-table * tr:nth-of-type(2) td:nth-of-type(2)")
-    private WebElement firstNameValidationLocator;
+    @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(2)")
+    private WebElement firstNameValidation;
 
-    @FindBy(css = "#employee-table * tr:nth-of-type(2) td:nth-of-type(3)")
-    private WebElement lastNameValidationLocator;
+    @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(3)")
+    private WebElement lastNameValidation;
 
-    @FindBy(css = "#employee-table * tr:nth-of-type(2) td:nth-of-type(5)")
-    private WebElement dependentsValidationLocator;
+    @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(5)")
+    private WebElement dependentsValidation;
 
-    @FindBy(css = "#employee-table * tr:nth-of-type(2) td:nth-of-type(7)")
-    private WebElement benefitCostsLocator;
+    @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(7)")
+    private WebElement benefitCosts;
 
-    @FindBy(css = "#employee-table * tr:nth-of-type(2) td:nth-of-type(8)")
-    private WebElement netPayLocator;
+    @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(8)")
+    private WebElement netPay;
 
     /**
      *
@@ -55,13 +55,13 @@ public class BenefitsDashboardPageObject extends PageObject {
      * @param dependents
      */
     public void addEmployeeInformation(String firstName, String lastName, String dependents) {
-        addEmployeeButtonLocator.click();
+        addEmployeeButton.click();
         webDriverWait = new WebDriverWait(driver, 10);
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(submitNewEmployeeButtonLocator));
-        addFirstNameLocator.sendKeys(firstName);
-        addLastNameLocator.sendKeys(lastName);
-        addDependentsLocator.sendKeys(dependents);
-        submitNewEmployeeButtonLocator.click();
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(submitNewEmployeeButton));
+        addFirstName.sendKeys(firstName);
+        addLastName.sendKeys(lastName);
+        addDependents.sendKeys(dependents);
+        submitNewEmployeeButton.click();
     }
 
     /**
@@ -69,7 +69,7 @@ public class BenefitsDashboardPageObject extends PageObject {
      * @return
      */
     public String verifyFirstName() {
-        return firstNameValidationLocator.getText();
+        return firstNameValidation.getText();
     }
 
     /**
@@ -77,7 +77,7 @@ public class BenefitsDashboardPageObject extends PageObject {
      * @return
      */
     public String verifyLastName() {
-        return lastNameValidationLocator.getText();
+        return lastNameValidation.getText();
     }
 
     /**
@@ -85,7 +85,7 @@ public class BenefitsDashboardPageObject extends PageObject {
      * @return
      */
     public String verifyDependents() {
-        return dependentsValidationLocator.getText();
+        return dependentsValidation.getText();
     }
 
     /**
@@ -93,7 +93,7 @@ public class BenefitsDashboardPageObject extends PageObject {
      * @return
      */
     public String verifyBenefitCosts() {
-        return benefitCostsLocator.getText();
+        return benefitCosts.getText();
     }
 
     /**
@@ -101,6 +101,6 @@ public class BenefitsDashboardPageObject extends PageObject {
      * @return
      */
     public String verifyNetPay() {
-        return netPayLocator.getText();
+        return netPay.getText();
     }
 }

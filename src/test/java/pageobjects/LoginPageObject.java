@@ -15,16 +15,16 @@ public class LoginPageObject extends PageObject {
     }
 
     @FindBy(css = "input[name^='form-username']")
-    private WebElement usernameLocator;
+    private WebElement credentialsUsername;
 
     @FindBy(css = "input[name^='form-password']")
-    private WebElement passwordLocator;
+    private WebElement credentialsPassword;
 
     @FindBy(id = "btnLogin")
-    private WebElement loginButtonLocator;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//*[@id='header']/h1[contains(.,'Benefits Dashboard')]")
-    private WebElement benefitsDashboardHeaderLocator;
+    private WebElement benefitsDashboardHeader;
 
     /**
      *
@@ -32,9 +32,9 @@ public class LoginPageObject extends PageObject {
      * @param password
      */
     public void withCredentials(String username, String password) {
-        usernameLocator.sendKeys(username);
-        passwordLocator.sendKeys(password);
-        loginButtonLocator.click();
+        credentialsUsername.sendKeys(username);
+        credentialsPassword.sendKeys(password);
+        loginButton.click();
     }
 
     /**
@@ -42,6 +42,6 @@ public class LoginPageObject extends PageObject {
      * @return
      */
     public String verifyLogin() {
-        return benefitsDashboardHeaderLocator.getText();
+        return benefitsDashboardHeader.getText();
     }
 }
