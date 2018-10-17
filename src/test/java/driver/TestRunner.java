@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class TestRunner {
 
     private final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
@@ -26,7 +29,8 @@ public class TestRunner {
         }
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("file:///C:/Users/Igor/IdeaProject/TestPaylocity/src/test/resources/login.html");  //ToDo add method to read files from resources
+        Path loginPageFile = Paths.get("src/test/resources/login.html");
+        driver.get(loginPageFile.toUri().toString());
     }
 
     @AfterTest
@@ -37,4 +41,3 @@ public class TestRunner {
         driver = null;
     }
 }
-
