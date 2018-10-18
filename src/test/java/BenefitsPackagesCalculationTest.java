@@ -7,7 +7,7 @@ import pageobjects.LoginPageObject;
 public class BenefitsPackagesCalculationTest extends TestRunner {
 
     /**
-     * This test checks that user can't login with wrong password.
+     * This test verifies that user cannot login with incorrect password.
      */
     @Test
     public void testLoginFailedFalsePositive() {

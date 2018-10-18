@@ -15,10 +15,6 @@ public class TestRunner {
     protected WebDriver driver;
     private WebDriverWait webDriverWait;
 
-    /**
-     *
-     *
-     */
     @BeforeTest
     public void setUp() {
         if (threadLocalDriver.get() != null) {

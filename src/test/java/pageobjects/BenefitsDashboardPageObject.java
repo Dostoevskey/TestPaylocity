@@ -10,9 +10,6 @@ public class BenefitsDashboardPageObject extends PageObject {
 
     WebDriverWait webDriverWait;
 
-    /**
-     * @param driver
-     */
     public BenefitsDashboardPageObject(WebDriver driver) {
         super(driver);
     }
@@ -47,11 +44,6 @@ public class BenefitsDashboardPageObject extends PageObject {
     @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(8)")
     private WebElement netPay;
 
-    /**
-     * @param firstName
-     * @param lastName
-     * @param dependents
-     */
     public void addEmployeeInformation(String firstName, String lastName, String dependents) {
         addEmployeeButton.click();
         webDriverWait = new WebDriverWait(driver, 10);
@@ -62,37 +54,22 @@ public class BenefitsDashboardPageObject extends PageObject {
         submitNewEmployeeButton.click();
     }
 
-    /**
-     * @return
-     */
     public String verifyFirstName() {
         return firstNameValidation.getText();
     }
 
-    /**
-     * @return
-     */
     public String verifyLastName() {
         return lastNameValidation.getText();
     }
 
-    /**
-     * @return
-     */
     public String verifyDependents() {
         return dependentsValidation.getText();
     }
 
-    /**
-     * @return
-     */
     public String verifyBenefitCosts() {
         return benefitCosts.getText();
     }
 
-    /**
-     * @return
-     */
     public String verifyNetPay() {
         return netPay.getText();
     }
