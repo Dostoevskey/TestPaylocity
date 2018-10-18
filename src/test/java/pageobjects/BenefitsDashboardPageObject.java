@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BenefitsDashboardPageObject extends PageObject {
 
-    WebDriverWait webDriverWait;
+    private WebDriverWait webDriverWait;
 
     public BenefitsDashboardPageObject(WebDriver driver) {
         super(driver);
@@ -54,9 +54,7 @@ public class BenefitsDashboardPageObject extends PageObject {
         submitNewEmployeeButton.click();
     }
 
-    public String verifyFirstName() {
-        return firstNameValidation.getText();
-    }
+    public String verifyFirstName() { return firstNameValidation.getText(); }
 
     public String verifyLastName() {
         return lastNameValidation.getText();
