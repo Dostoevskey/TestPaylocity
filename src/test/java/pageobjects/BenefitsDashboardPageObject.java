@@ -29,7 +29,7 @@ public class BenefitsDashboardPageObject extends PageObject {
     @FindBy(css = "#employees-form div:nth-of-type(3) input")
     private WebElement addDependents;
 
-    @FindBy(xpath = "//button[@type='button' and contains(.,'Submit')]")
+    @FindBy(css = ".col-sm-offset-2.col-sm-10 .btn.btn-primary")
     private WebElement submitNewEmployeeButton;
 
     @FindBy(css = "#employee-table tr:nth-of-type(2) td:nth-of-type(2)")

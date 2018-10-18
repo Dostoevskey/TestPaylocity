@@ -7,8 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.File;
 
 public class TestRunner {
 
@@ -17,8 +16,8 @@ public class TestRunner {
     private WebDriverWait webDriverWait;
 
     /**
-     * To run tests locally, please update your path to .../TestPaylocity/src/test/resources/login.html
-     * or specify url to test environment.
+     *
+     *
      */
     @BeforeTest
     public void setUp() {
@@ -29,8 +28,9 @@ public class TestRunner {
         }
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        Path loginPageFile = Paths.get("src/test/resources/login.html");
-        driver.get(loginPageFile.toUri().toString());
+        String inputFilePath = "src/test/resources/login.html";
+        String url = new File(inputFilePath).getAbsolutePath();
+        driver.get("file:///" + url);
     }
 
     @AfterTest
